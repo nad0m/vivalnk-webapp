@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
+<body>
+
+<div>
+
+<button id="scanDevice">Scan</button>
+
+<form>
+    <select id="devices" style="width: 150px;" size="20" onchange="changeFunc()">
+
+    </select>
+
+
+    <select id="connected" style="width: 150px;" size="20">
+
+    </select>
+
+</form>
+</div>
+<button id="connectDevice">Connect</button>
+<button id="disconnectDevice">Disconnect</button>
+<button id="connectedButton">Connected Devices</button>
+<div id="root"></div>
+<script type="text/javascript" src="cassia5.js"></script>
+</body>
+</html>
