@@ -1,3 +1,4 @@
+const TEMPERATURE_HEXSTRING_UNIT = 0.0625;
 
 function Patch(uuid)
 {
@@ -21,9 +22,19 @@ function getBattery(hexBattery)
 	return parseInt(hexBattery, 16) * 1 + "%";
 }
 
-function getSN(hexSN)
+function getTemp(adData)
 {
-	var SNBinary = dec2bin(parseInt(hexSN, 16));
+	return (parseInt(adData.substring(58, 62),16) ^ 0xffff) * TEMPERATURE_HEXSTRING_UNIT;
+}
+
+
+function getSN(scanResult)
+{
+	//var hexSN = scanResult.substring(20, 22) + scanResult.substring(26, 30) + scanResult.substring(32, 34);
+
+	var hexSN = scanResult.substring(48, 56);
+
+	var SNBinary = dec2bin(parseInt(hexSN, 16)^ 0xffffffff) ;
 	
 
 	SNBinary = addZeros(SNBinary, 32);
@@ -73,18 +84,28 @@ function randomString(size)
     return text;
 }
 
-var vv = new Patch("00001800-0000-1000-8000-00805f9b34fb");
+var vv = new Patch("0000180000001000800000805f9b34fb");
 var vv2 = new Patch("8f02010510ad4d25a0566976614c6e6b");
 var arr = [];
 
-debug("Serial: " + vv.serialNum);
+//debug("Serial: " + vv.serialNum);
+
+console.log(getTemp("02010411076B6E4C61766956A0514D18640401008F09FFFDFBCF6FEE9BFE9A"));
+console.log(getSN("02010411076B6E4C61766956A0514D18640401008F09FFFDFDEF6541EBFE92"));
+console.log(getTemp("02010411076B6E4C61766956A0514D18640401008F09FFFDFDEF6541EBFEDE"));
+  			                   //0000180000001000800000805f9b34fb
+var str = "02010411076B6E4C61766956A0514D18640401008F09FFFDFDEF6541EBFEDE";
+
+
+console.log(str.includes("0401008F"));
 
 
 
+for ( var i = 0 ; i < 0; i++)
+{
 
-
-
-
+	console.log(i);
+}
 
 
 
