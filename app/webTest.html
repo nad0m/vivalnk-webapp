@@ -5,20 +5,48 @@
     <title>Hello React</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
+<style>
+    body{
+        background: radial-gradient(#c0cfe2,#bacce2);
+    }
+    #info{
+        margin:0 auto;
+        height:200px;
+        width:300px;
+        background-color:#4F4F62;
+        border-radius:20px;
+        padding:10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        opacity:0.7;
+
+
+    }
+    .container{
+        background-color: #4F4F62;
+        padding: 12px;
+        margin: 25px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .infoText{
+        text-align:left;
+        color:white;
+        font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    }
+</style>
 <body>
-
-<div>
-
+<div style="width: 50%;">
 <button id="scanDevice">Scan</button>
 
 <form>
-    <select id="devices" style="width: 150px;" size="20" onchange="changeFunc()">
+    <select id="devices" style="width: 150px;" size="15" onchange="changeFunc()">
 
     </select>
 
 
-    <select id="connected" style="width: 150px;" size="20">
+    <select id="connected" style="width: 150px;" size="15">
 
     </select>
 
@@ -28,6 +56,19 @@
 <button id="disconnectDevice">Disconnect</button>
 <button id="connectedButton">Connected Devices</button>
 <div id="root"></div>
+
+
+<div id="info">
+    <p class="infoText" style="text-align: center;">Current Patch</p>
+    <p class="infoText" id="patchName" ></p>
+    <p class="infoText" id="patchMac" ></p>
+    <p class="infoText" id="patchTemp" ></p>
+    <p class="infoText" id="lastUpdate" ></p>
+</div>
+
+<div class="container">
+    <div id="chart_div"></div>
+</div>
 <script type="text/javascript" src="cassia5.js"></script>
 </body>
 </html>
